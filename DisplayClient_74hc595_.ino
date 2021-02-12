@@ -831,21 +831,21 @@ void idle(bool critical) {
 #ifdef INCLUDE_BUTTONS
         int clockEnablePin = 9;
         int clockPin = 6;
+        int ploadPin = 3;
+        int dataPin = 7;
 
-        digitalWrite(clockEnablePin, HIGH);
-        digitalWrite(ploadPin, LOW);
-        delayMicroseconds(5);
         digitalWrite(ploadPin, HIGH);
         digitalWrite(clockEnablePin, LOW);
         
 		for (int btnIdx = 0; btnIdx < ENABLED_BUTTONS_COUNT; btnIdx++) {
-            
 			BUTTONS[btnIdx]->read(digitalRead(dataPin));
             
             digitalWrite(clockPin, HIGH);
             delayMicroseconds(5);
             digitalWrite(clockPin, LOW);
 		}
+        digitalWrite(clockEnablePin, HIGH);
+        digitalWrite(ploadPin, LOW);
 #endif
 #ifdef INCLUDE_TM1638
 		for (int i = 0; i < TM1638_ENABLEDMODULES; i++) {

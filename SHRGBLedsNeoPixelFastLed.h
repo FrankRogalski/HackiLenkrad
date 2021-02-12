@@ -11,10 +11,10 @@ CRGB SHRGBLedsNeoPixelFastLeds_leds[WS2812B_RGBLEDCOUNT];
 class SHRGBLedsNeoPixelFastLeds : public SHRGBLedsBase {
 private:
     unsigned long lastRead = 0;
-  byte pins = 0;
-  byte DATA_PIN = 4;
-  byte CLOCK_PIN = 6;
-  byte LATCH_PIN = 5;
+    byte pins = 0;
+    byte dataPin = 4;
+    byte clockPin = 6;
+    byte latchPin = 5;
 
 public:
 
@@ -22,11 +22,11 @@ public:
         SHRGBLedsBase::begin(maxLeds, righttoleft);
         FastLED.addLeds<NEOPIXEL, WS2812B_DATAPIN>(SHRGBLedsNeoPixelFastLeds_leds, maxLeds);
 
-    pinMode(DATA_PIN, OUTPUT);
-    pinMode(CLOCK_PIN, OUTPUT);
-    pinMode(LATCH_PIN, OUTPUT);
-    digitalWrite(LATCH_PIN, HIGH);
-    digitalWrite(CLOCK_PIN,LOW);
+    pinMode(dataPin, OUTPUT);
+    pinMode(clockPin, OUTPUT);
+    pinMode(latchPin, OUTPUT);
+    digitalWrite(latchPin, HIGH);
+    digitalWrite(clockPin,LOW);
 
         if (testMode > 0) {
             for (int i = 0; i < maxLeds; i++) {
@@ -60,11 +60,11 @@ protected:
         //Changing the nth bit to x
         //https://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit
         pins ^= (-int(on) ^ pins) & (1UL << lednumber);
-        //digitalWrite(LATCH_PIN, LOW);
-        shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, pins);
-        digitalWrite(LATCH_PIN, HIGH);
+        //digitalWrite(latchPin, LOW);
+        shiftOut(dataPin, clockPin, MSBFIRST, pins);
+        digitalWrite(latchPin, HIGH);
         delayMicroseconds(5);
-        digitalWrite(LATCH_PIN, LOW);
+        digitalWrite(latchPin, LOW);
     }
 };
 
