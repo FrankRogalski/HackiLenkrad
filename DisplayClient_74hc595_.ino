@@ -433,7 +433,7 @@ SHPWMPin shCONSPIN(CONS_PIN, 40);
 // ----------------------- ADDITIONAL BUTTONS ---------------------------------------------------------------
 // https://github.com/zegreatclan/SimHub/wiki/Arduino-Press-Buttons
 // ----------------------------------------------------------------------------------------------------------
-#define ENABLED_BUTTONS_COUNT 0 //{"Group":"Additional Buttons","Name":"ENABLED_BUTTONS_COUNT","Title":"Additional buttons (directly connected to the arduino, 12 max) buttons count","DefaultValue":"0","Type":"int","Max":12}
+#define ENABLED_BUTTONS_COUNT 8 //{"Group":"Additional Buttons","Name":"ENABLED_BUTTONS_COUNT","Title":"Additional buttons (directly connected to the arduino, 12 max) buttons count","DefaultValue":"0","Type":"int","Max":12}
 #ifdef  INCLUDE_BUTTONS
 
 #define BUTTON_PIN_1 3          //{"Name":"BUTTON_PIN_1","Title":"1'st Additional button digital pin","DefaultValue":"3","Type":"pin;Button 1","Condition":"ENABLED_BUTTONS_COUNT>=1"}
