@@ -844,7 +844,7 @@ void idle(bool critical) {
         digitalWrite(clockEnablePin, LOW);
         
 		for (int btnIdx = 0; btnIdx < ENABLED_BUTTONS_COUNT; btnIdx++) {
-			BUTTONS[btnIdx]->read(digitalRead(dataPin));
+			BUTTONS[btnIdx]->read(digitalRead(dataPin) ^ 1);
             
             digitalWrite(clockPin, HIGH);
             delayMicroseconds(5);
