@@ -834,6 +834,8 @@ void idle(bool critical) {
         int ploadPin = 3;
         int dataPin = 7;
 
+        digitalWrite(ploadPin, LOW);
+        delayMicroseconds(5);
         digitalWrite(ploadPin, HIGH);
         digitalWrite(clockEnablePin, LOW);
         
@@ -845,7 +847,6 @@ void idle(bool critical) {
             digitalWrite(clockPin, LOW);
 		}
         digitalWrite(clockEnablePin, HIGH);
-        digitalWrite(ploadPin, LOW);
 #endif
 #ifdef INCLUDE_TM1638
 		for (int i = 0; i < TM1638_ENABLEDMODULES; i++) {
