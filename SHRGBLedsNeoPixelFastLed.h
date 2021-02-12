@@ -22,11 +22,11 @@ public:
         SHRGBLedsBase::begin(maxLeds, righttoleft);
         FastLED.addLeds<NEOPIXEL, WS2812B_DATAPIN>(SHRGBLedsNeoPixelFastLeds_leds, maxLeds);
 
-    pinMode(dataPin, OUTPUT);
-    pinMode(clockPin, OUTPUT);
-    pinMode(latchPin, OUTPUT);
-    digitalWrite(latchPin, HIGH);
-    digitalWrite(clockPin,LOW);
+        pinMode(dataPin, OUTPUT);
+        pinMode(clockPin, OUTPUT);
+        pinMode(latchPin, OUTPUT);
+        digitalWrite(latchPin, HIGH);
+        digitalWrite(clockPin,LOW);
 
         if (testMode > 0) {
             for (int i = 0; i < maxLeds; i++) {
