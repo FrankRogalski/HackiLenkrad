@@ -1,8 +1,5 @@
 #ifndef __SHRGBLEDSNEOPIXEL_H__
 #define __SHRGBLEDSNEOPIXEL_H__
-#define DATA_PIN 4
-#define CLOCK_PIN 6
-#define LATCH_PIN 5
 
 #include <Arduino.h>
 #include "SHRGBLedsBase.h"
@@ -11,7 +8,6 @@
 class SHRGBLedsNeoPixel : public SHRGBLedsBase {
 private:
 	unsigned long lastRead = 0;
-    unsigned byte pins = 0;
 
 protected:
 	Adafruit_NeoPixel * NeoPixel_strip;
@@ -37,15 +33,7 @@ public:
 
 protected:
 	void setPixelColor(uint8_t lednumber, uint8_t r, uint8_t g, uint8_t b) {
-		//NeoPixel_strip->setPixelColor(lednumber, r, g, b);
-        bool on = r + g + b > 0;
-        lednumber -= 50;
-        //Changing the nth bit to x
-        //https://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit
-        pins ^= (-int(on) ^ pins) & (1UL << lednumber);
-        digitalWrite(LATCH_PIN, LOW);
-        shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, pins);
-        digitalWrite(LATCH_PIN, HIGH);
+		NeoPixel_strip->setPixelColor(lednumber, r, g, b);
 	}
 };
 
