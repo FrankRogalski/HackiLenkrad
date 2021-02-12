@@ -833,6 +833,10 @@ void idle(bool critical) {
         int clockPin = 6;
         int ploadPin = 3;
         int dataPin = 7;
+        pinMode(dataPin, INPUT);
+        pinMode(clockPin, OUTPUT);
+        pinMode(clockEnablePin, OUTPUT);
+        pinMode(ploadPin, OUTPUT);
 
         digitalWrite(ploadPin, LOW);
         delayMicroseconds(5);
