@@ -828,6 +828,7 @@ void idle(bool critical) {
 
 	if (ButtonsDebouncer.Debounce()) {
 		bool changed = false;
+//Hier ist unser eigener Stuff(Code von Gunner)
 #ifdef INCLUDE_BUTTONS
         int clockEnablePin = 10;
         int clockPin = 6;
